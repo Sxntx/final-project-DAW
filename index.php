@@ -1,52 +1,37 @@
-<?php include('views/common/header.php');?>
-<div class="loginpanel text-center">
-
-        <h2>Inicia la sessió</h2>
-
-        <div class="subcontent loginsub">
-            <form action="https://aulavirtual.caib.es/c07008363/login/index.php" method="post" id="login">
-                <div class="loginform">
-                    <div class="form-label">
-                        <label for="username">
-                                Nom d'usuari
-                        </label>
-                    </div>
-                    <div class="form-input">
-                        <input type="text" name="username" id="username" size="15" value="" autocomplete="username">
-                    </div>
-                    <div class="clearer"><!-- --></div>
-                    <div class="form-label">
-                        <label for="password">Contrasenya</label>
-                    </div>
-                    <div class="form-input">
-                        <input type="password" name="password" id="password" size="15" value="" autocomplete="current-password">
-                    </div>
-                </div>
-
-                <div class="clearer"><!-- --></div>
-                    <div class="rememberpass">
-                        <input type="checkbox" name="rememberusername" id="rememberusername" value="1">
-                        <label for="rememberusername">Recorda el nom d'usuari</label>
-                    </div>
-                <div class="clearer"><!-- --></div>
-                <input id="anchor" type="hidden" name="anchor" value="">
-                <script>document.getElementById('anchor').value = location.hash;</script>
-                <input type="hidden" name="logintoken" value="fSCF4BeInytUnbeoN2mYNSFZCPBidFGr">
-                <input type="submit" id="loginbtn" value="Inicia la sessió">
-                <div class="forgetpass">
-                    <a href="https://aulavirtual.caib.es/c07008363/login/forgot_password.php">Heu oblidat el nom d'usuari o la contrasenya?</a>
-                </div>
-            </form>
-
-            <div class="desc">
-                Les galetes han d'estar habilitades en el vostre navegador
-                <span class="helptooltip">
-    <a href="https://aulavirtual.caib.es/c07008363/help.php?component=moodle&amp;identifier=cookiesenabled&amp;lang=ca" title="Ajuda: «Les galetes han d'estar habilitades en el vostre navegador»" aria-haspopup="true" target="_blank"><img class="icon iconhelp" alt="Ajuda: «Les galetes han d'estar habilitades en el vostre navegador»" title="Ajuda: «Les galetes han d'estar habilitades en el vostre navegador»" src="https://aulavirtual.caib.es/c07008363/theme/image.php/xtec2/core/1613550610/help"></a>
-</span>
-            </div>
-
-        </div>
-
-
+<?php include('views/common/header.php');
+      include('controllers/bd.php')?>
+<div class="container">
+  <div class="row">
+    <div class="col-4">
     </div>
-<?php      include('views/common/footer.php');?>
+    <div class="col-8">
+      <div class="texte-center h2 mt-4 mb-4">
+        Llistat de cursos 2020-2021
+      </div>
+      <table class="table table-hover mt-5">
+        <tbody>
+      <?php #Main donde se muestran los cursos actuales
+
+      $ctgy = [];
+      $res = mysqli_query($conn,"SELECT nombre FROM Grupo");
+      //$asig = myqli_query($conn, "SELECT nombre  FROM Asignatura WHERE idGrupo ");
+      while($row = $res->fetch_assoc()){
+      array_push($ctgy,$row['nombre']);
+      }
+      $len = count($ctgy);
+      for ($i = 0; $i< $len; $i++){
+          echo '<tr><th scope="row"><button id="'.$i.'"class="btn h5 text-primary" onclick="asigna(this.id)"data-toogle="collapse" data-target="#'.$i.'" ><strong>'
+                  .$ctgy[$i].
+               '<div class="toogle"
+               </strong></button></th></tr>';
+       }
+       for ($i=0; $i <  ; $i++) {
+         // code...
+       }
+       ?>
+     </tbody>
+       </table>
+    </div>
+  </div>
+</div>
+<?php include('views/common/footer.php')?>
