@@ -7,13 +7,13 @@ border-top: 4px solid;
 <div class="container">
   <div class="row">
     <!--Div as aside to show fastest list of courses-->
-    <div class="col mt-3 d-sm-none d-md-block mr-2 ml-n1">
+    <div class="col-md-3 mt-3 d-sm-none d-md-block  ml-n1">
       <!--Navegació-->
       <div class="header ml-n5 mr-5">
         <div class="title text-center pt-1 pb-1 rounded" style="background-color: #4E006D";>
-          <h5 class="text-light">Navegació</h5>
+          <h5 id="navegacion" class="text-light dropdown-toggle">Navegació</h5>
           <div class="content  bg-light">
-            <a href="index.php">Inici</a>
+            <a href="index.php" id="amaga" hidden>Inici</a>
             <?php #Main donde se muestran los cursos actuales
 
             $ctgy = [];
@@ -25,14 +25,15 @@ border-top: 4px solid;
             for ($i = 0; $i< $len; $i++){
               $tmp;
                 echo '<div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toogle" style="width: 100%;" type="button" data-toggle="dropdown">
-                          '.$ctgy[$i].'</button><span class="glyphicon glyphicon-align-left"></span>';
+                        <button  id="amaga" class="btn btn-info dropdown-toggle" style="width: 100%;" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" hidden>
+                          '.$ctgy[$i].
+                          '</button>';
                     $tmp = mysqli_query($conn, "SELECT nombre FROM Asignatura WHERE idGrupo =  $i");
                     $asignaturas = [];
                     while($rw = $tmp->fetch_assoc()){
                     array_push($asignaturas,$rw['nombre']);
                     }
-                echo '<ul class="dropdown-menu">';
+                echo '<ul class="dropdown-menu dropdown-menu-right">';
                           for ($a=0; $a < count($asignaturas); $a++) {
                             echo  '<li><a class="dropdown-item" href="#"">'.$asignaturas[$a].'</a></li>';
                           }
@@ -45,9 +46,9 @@ border-top: 4px solid;
       </div>
       <!--Avisos -->
       <div class="header mt-3 ml-n5 mr-5">
-        <div class="title text-center pt-1 pb-1  rounded" style="background-color: #4E006D";>
-          <h5 class="text-light">Avisos - Informació</h5>
-          <div class="content bg-light">
+        <div class="title text-center pt-1 pb-1  rounded" id="avisos" style="background-color: #4E006D";>
+          <h5 class="text-light  dropdown-toggle">Avisos</h5>
+          <div class="content bg-light" id="info" hidden>
             Mostrar info
           </div>
 

@@ -18,13 +18,17 @@
     <title>IES Son Ferrer</title>
   </head>
   <body>
-    <div class="container">
+    <div class="container" >
       <div class="row mb-n3">
         <div class="col-6">
           <img src="imgs/departament.png" alt="">
         </div>
         <div class="col-6">
-          <p id="session" class="float-right">No heu iniciat sessió</p>
+
+          <p id='session' class='float-right'>No heu iniciat sessió
+          <a href='login.php' class='text-info'>(Inicia sesió)</a>
+
+           </p>
         </div>
 
       </div>
@@ -34,7 +38,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="desple">
-        <a class="navbar-brand text-light" href="login.php">IES SON FERRER</a>
+        <a class="navbar-brand text-light" href="index.php">IES SON FERRER</a>
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
           <li class="nav-item active">
             <a class="nav-link text-light" href="login.php" hidden>Home <span class="sr-only">(current)</span></a>

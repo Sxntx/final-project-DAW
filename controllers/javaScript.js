@@ -19,4 +19,26 @@ function asigna(btn) {
   }
 
   console.log(next);
-}
+};
+
+window.onload = ()=> {
+  document.getElementById('navegacion').onclick = ()=>  {
+    var btns = document.querySelectorAll('#amaga');
+    for (var i = 0; i < btns.length; i++) {
+      if (btns[i].hidden != true) {
+        btns[i].setAttribute('hidden', true);
+      }else {
+        btns[i].removeAttribute('hidden');
+      }
+    }
+  };
+
+  document.getElementById('avisos').onclick = ()=> {
+      var info  = document.getElementById('info');
+      if (info.hidden != true) {
+        info.setAttribute('hidden', true);
+      }else {
+        info.removeAttribute('hidden');
+      }
+    };
+};

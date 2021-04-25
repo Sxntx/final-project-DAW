@@ -1,10 +1,10 @@
-<?php include('views/common/header.php');?>
+<?php include('views/common/header.php'); session_start();session_destroy(); session_unset();?>
 <div class="loginpanel text-center">
 
         <h2>Inicia la sessió</h2>
 
         <div class="subcontent loginsub">
-            <form action="https://aulavirtual.caib.es/c07008363/login/index.php" method="post" id="login">
+            <form action="controllers/whichUser.php" method="post" id="login">
                 <div class="loginform">
                     <div class="form-label">
                         <label for="username">
@@ -42,11 +42,11 @@
                 Les galetes han d'estar habilitades en el vostre navegador
                 <span class="helptooltip">
     <a href="https://aulavirtual.caib.es/c07008363/help.php?component=moodle&amp;identifier=cookiesenabled&amp;lang=ca" title="Ajuda: «Les galetes han d'estar habilitades en el vostre navegador»" aria-haspopup="true" target="_blank"><img class="icon iconhelp" alt="Ajuda: «Les galetes han d'estar habilitades en el vostre navegador»" title="Ajuda: «Les galetes han d'estar habilitades en el vostre navegador»" src="https://aulavirtual.caib.es/c07008363/theme/image.php/xtec2/core/1613550610/help"></a>
-</span>
+              </span>
             </div>
 
         </div>
 
 
     </div>
-<?php      include('views/common/footer.php');?>
+<?php include('views/common/footer.php');?>
