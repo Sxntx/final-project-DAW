@@ -4,6 +4,15 @@ include('bd.php');
 $_SESSION['logged'] = true;
 include('..//views/common/header.php');
 ?>
+<script>
+function confirmar (){
+  if(confirm('Seguro que quieres borrar')){
+    location.href='deleteController.php';
+  }else{
+    alert('operacion cancelada');
+  }
+}
+</script>
 <div class="container">
   <div class="row">
     <div class="col-md-12 text-center h3 mt-5 mb-5">
@@ -11,7 +20,7 @@ include('..//views/common/header.php');
     </div>
   </div>
   <div class="row mb-3">
-      <a href="anyadir.php">Añade (+)</a>
+      <a href="addPersonalController.php">Añade (+)</a>
   </div>
   <table class="col6 table">
 
@@ -47,7 +56,7 @@ include('..//views/common/header.php');
     echo "<td>";
     ?>
     <a href="editController.php?id=<?php echo $row['id']?>" class="btn btn-secondary">Edit </a>
-    <a href="deleteController.php?id=<?php echo $row['id']?>" class="btn btn-danger">Delete </a>
+    <a  class="btn btn-danger" onclick="confirmar()">delete</a>
   <?php  echo "</td></tr>"; } ?>
 
       </tbody>
