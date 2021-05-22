@@ -22,6 +22,14 @@ function asigna(btn) {
 };
 
 window.onload = ()=> {
+  function confirmar() {//function to confim delete user
+    if (confirm('Seguro que quieres borrar')) {
+      location.href = 'deleteController.php';
+    }else {
+      alert('operacion cancelada');
+    }
+  }
+
   document.getElementById('navegacion').onclick = ()=>  {
     var btns = document.querySelectorAll('#amaga');
     for (var i = 0; i < btns.length; i++) {

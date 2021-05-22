@@ -6,13 +6,16 @@ include('..//views/common/header.php');
 ?>
 <script>
 function confirmar (){
-  if(confirm('Seguro que quieres borrar')){
-    location.href='deleteController.php';
+  if(!confirm("Seguro que quieres borrar")){
+    document.cookie = "borrar=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+    alert("operacion cancelada");
   }else{
-    alert('operacion cancelada');
+    document.cookie = "borrar=true";
+    window.location = "deleteController.php";
   }
 }
 </script>
+
 <div class="container">
   <div class="row">
     <div class="col-md-12 text-center h3 mt-5 mb-5">
@@ -56,7 +59,7 @@ function confirmar (){
     echo "<td>";
     ?>
     <a href="editController.php?id=<?php echo $row['id']?>" class="btn btn-secondary">Edit </a>
-    <a  class="btn btn-danger" onclick="confirmar()">delete</a>
+    <a href="deleteController.php?id=<?php echo $row['id']?>" class="btn btn-danger" onclick="confirmar()">delete</a>
   <?php  echo "</td></tr>"; } ?>
 
       </tbody>
