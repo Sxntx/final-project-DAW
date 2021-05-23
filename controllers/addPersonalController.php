@@ -1,7 +1,8 @@
 <?php include('../views/common/header.php');
 include('bd.php');
-$i = 0;
+
 if (isset($_POST['guardar'])) {
+    $i++;
     $nombre = $_POST['nombre'];
     $apellidos = $_POST['apellidos'];
     $usuario = $_POST['usuario'];
@@ -11,21 +12,27 @@ if (isset($_POST['guardar'])) {
     $query = mysqli_query($conn, "INSERT INTO Personal(nombre,apellidos,usuario,contrasenya,idTipoUsuario,idCurso)
   VALUES ('$nombre', '$apellidos', '$usuario', '$contrasenya', '$idTipoUsuario', '$idCurso')");
 
+    if ($idTipoUsuario == 2) {// si es alumno lo guardamos en tabla alumno
+        $idPersonalA = mysqli_query($conn, "SELECT id FROM Personal ORDER BY id DESC LIMIT 1");
+        $lastId = mysqli_fetch_array($idPersonalA, MYSQLI_ASSOC);
+        $i = $lastId['id'];
+        $fnac = $_POST['anyNac'];
+        $nExp = 'SF'.$i++;
+        $insAlu = mysqli_query($conn, "INSERT INTO Alumno(nombre, apellidos, anyoNacimiento, nExp)
+        VALUES ('$nombre', '$apellidos', '$fnac', '$nExp')");
+
+
+
+    }
+
     if ($idTipoUsuario == 1) {//insertamos personal en tabla profesor (1)
         $email = $_POST['email'];
         $tel = $_POST['tel'];
         $idPersonal = mysqli_query($conn, "SELECT id FROM Personal WHERE usuario = '$usuario'");
-        $row = mysqli_fetch_array($idPersonal,MYSQLI_ASSOC);
+        $row = mysqli_fetch_array($idPersonal, MYSQLI_ASSOC);
         $idPers = $row['id'];
         mysqli_query($conn, "INSERT INTO Profesor(idPersonal, Email, Telefono)
    VALUES ('$idPers', '$email', '$tel')");
-    }
-    elseif ($idTipoUsuario == 2) {// si es alumno lo guardamos en tabla alumno
-        $fnac = $_POST['anc'];
-        $nExp = 'sonfe'.$i;
-        mysqli_query($conn, "INSERT INTO Alumno(nombre, apellidos, añoNacimiento,nExp)
-        VALUES ('$nombre', '$apellidos', '$fnac', '$nExp')");
-        $i++;
     }
 
     if (!$query) {
@@ -85,14 +92,12 @@ if (isset($_POST['guardar'])) {
     <label>Apellidos:</label><input type="text" name="apellidos" value=""><br>
     <label>Nick:</label><input type="text" name="usuario" value=""><br>
     <label>Pass:</label><input type="password" name="contrasenya" value=""><br>
-    <label>Confirm Pass:</label><input type="password" name="contrasenya" value=""><br>
+    <label>Confirm Pass:</label><input type="password" name="contrasenyaDos" value=""><br>
     <label>Tipo usuario:</label><input type="number" min="0" max="2" id="tpuser" name="idTipoUsuario" value=""
                                        onchange="appear()"> <i><small>0 admin, 1 profesor, 2 alumnno</small></i><br>
-    <label id="apEmail" hidden>email:</label> <input hidden type="email" value="" name="email" id="email"><br>
-    <label id="lmovil" hidden>tel:</label><input hidden type="tel" value="" name="tel" id="tel"><br>
-    <label id="apNac" hidden>año nacimiento</label> <input hidden type="date" id="anc" name="anc" value=""><br>
-    idCurso:<input type="number" min="-1" max="13" name="idCurso" value=""> <i id="show" onmouseover="muestra()"
-    onmouseout="oculta()"><small>ratón aquí para info</small></i><br>
+    <label>idCurso:</label><input type="number" min="-1" max="13" name="idCurso" value=""> <i id="show" onmouseover="muestra()"
+                                                                                              onmouseout="oculta()"><small>ratón aquí
+            para info</small></i><br>
     <small>
         <ul hidden id="lista">
             <li><i><small>-1 Sin curso</small></i></li>
@@ -112,5 +117,10 @@ if (isset($_POST['guardar'])) {
             <li><i><small>13 2n FPB Fabricacio</small></i></li>
         </ul>
     </small>
+    <label id="apEmail" hidden>email:</label> <input hidden type="email" value="" name="email" id="email"
+                                                     placeholder="you@mail.com"><br>
+    <label id="lmovil" hidden>tel:</label><input hidden type="tel" value="" name="tel" id="tel" placeholder="600000001"><br>
+    <label id="apNac" hidden>año nacimiento</label> <input hidden type="date" id="anc" name="anyNac"
+                                                           placeholder="YYYY/MM/DD"><br>
     <button type="submit" name="guardar" class="btn btn-success">Save</button>
 </form>
