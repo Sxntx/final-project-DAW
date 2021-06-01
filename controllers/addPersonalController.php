@@ -2,17 +2,17 @@
 include('bd.php');
 
 if (isset($_POST['guardar'])) {
-    $i++;
     $nombre = $_POST['nombre'];
     $apellidos = $_POST['apellidos'];
     $usuario = $_POST['usuario'];
     $contrasenya = $_POST['contrasenya'];
     $idTipoUsuario = $_POST['idTipoUsuario'];
     $idCurso = $_POST['idCurso'];
-    $query = mysqli_query($conn, "INSERT INTO Personal(nombre,apellidos,usuario,contrasenya,idTipoUsuario,idCurso)
+    $query = mysqli_query($conn,
+        "INSERT INTO Personal(nombre,apellidos,usuario,contrasenya,idTipoUsuario,idCurso)
   VALUES ('$nombre', '$apellidos', '$usuario', '$contrasenya', '$idTipoUsuario', '$idCurso')");
 
-    if ($idTipoUsuario == 2) {// si es alumno lo guardamos en tabla alumno
+    if ($idTipoUsuario == 2) {//if studen save data into alumno table (2)
         $idPersonalA = mysqli_query($conn, "SELECT id FROM Personal ORDER BY id DESC LIMIT 1");
         $lastId = mysqli_fetch_array($idPersonalA, MYSQLI_ASSOC);
         $i = $lastId['id'];
@@ -21,11 +21,9 @@ if (isset($_POST['guardar'])) {
         $insAlu = mysqli_query($conn, "INSERT INTO Alumno(nombre, apellidos, anyoNacimiento, nExp)
         VALUES ('$nombre', '$apellidos', '$fnac', '$nExp')");
 
-
-
     }
 
-    if ($idTipoUsuario == 1) {//insertamos personal en tabla profesor (1)
+    if ($idTipoUsuario == 1) {//if teacher save data into profesor table (1)
         $email = $_POST['email'];
         $tel = $_POST['tel'];
         $idPersonal = mysqli_query($conn, "SELECT id FROM Personal WHERE usuario = '$usuario'");
@@ -46,15 +44,15 @@ if (isset($_POST['guardar'])) {
 
 ?>
 <script>
-    function muestra() {
+    function muestra() {//show clas ids
         document.getElementById("lista").removeAttribute('hidden');
     }
 
-    function oculta() {
+    function oculta() {//hidde clas id
         document.getElementById("lista").setAttribute('hidden', true);
     }
 
-    function appear() {
+    function appear() {//show inputs if studen or hidden if teacher..
         var tpuser = document.getElementById("tpuser");
         var rmHiden = document.getElementById("email");
         var lemail = document.getElementById("apEmail");

@@ -58,8 +58,8 @@ function confirmar (){
     echo "<td>".$idCurso."</td>";
     echo "<td>";
     ?>
-    <a href="editController.php?id=<?php echo $row['id']?>?tipoUsuario=<?php echo $row['idTipoUsuario']?>" class="btn btn-secondary">Edit </a>
-    <a href="deleteController.php?id=<?php echo $row['id']?>" class="btn btn-danger" onclick="confirmar()">delete</a>
+    <a href="editController.php?id=<?php echo $row['id']?>" class="btn btn-secondary">Edit </a>
+    <a href="deleteController.php?id=<?php echo $row['id']?>?tipoUsuario=<?php echo $row['idTipoUsuario']?>" class="btn btn-danger" onclick="confirmar()">delete</a>
   <?php  echo "</td></tr>"; } ?>
 
       </tbody>
