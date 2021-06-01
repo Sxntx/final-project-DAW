@@ -34,7 +34,7 @@ function confirmar (){
       <th>usuario</th>
       <th>contrasenya</th>
       <th>tipoUsuario</th>
-      <th>idCurso</th>
+      <th>idGrupo</th>
       <th></th>
     </thead>
     <tbody>
@@ -64,4 +64,68 @@ function confirmar (){
 
       </tbody>
   </table>
+
+    <!-- GRUPOS -->
+    <div class="row">
+        <div class="col-md-12 text-center h3 mt-5 mb-5">
+            Añade, edita y/o elimina Grupos.
+        </div>
+    </div>
+
+    <table  class="col6 table">
+        <thead>
+        <th>id</th>
+        <th>nombre</th>
+        <th>aula</th>
+        <th>idProfesor</th>
+        </thead>
+        <tbody>
+        <?php
+        $q_grupo = mysqli_query($conn, "SELECT * FROM Grupo");
+        while ($grupo = $q_grupo->fetch_assoc()){
+            $grupo_id = $grupo['id'];
+            $grupo_name = $grupo['nombre'];
+            $grupo_idGrupo = $grupo['aula'];
+            $grupo_tutor = $grupo['idProfesor'];
+            echo "<tr><td>$grupo_id</td>
+                  <td>$grupo_name</td>
+                  <td>$grupo_idGrupo</td>
+                  <td>$grupo_tutor</td>
+                  <td>";?>
+                  <a href="editGroup.php?id=<?php echo $grupo['id']?>" class='btn btn-secondary'>Edit</a>
+                  <a href='deleteGroup.php?id=<?php echo $grupo['id']?>' class='btn btn-danger'>Detele</a>
+                   <?php echo"</td></tr>"; } ?>
+
+        </tbody>
+
+    </table>
+
+    <!--  ASIGNATURAS  -->
+    <div class="row">
+        <div class="col-md-12 text-center h3 mt-5 mb-5">
+            Añade, edita y/o elimina Asignaturas.
+        </div>
+    </div>
+
+    <table  class="col6 table">
+        <thead>
+        <th>id(codigo)</th>
+        <th>nombre</th>
+        <th>idGrupo</th>
+        </thead>
+        <tbody>
+        <?php
+        $q = mysqli_query($conn, "SELECT * FROM Asignatura");
+        while ($asignaturas = $q->fetch_assoc()){
+            $asig_id = $asignaturas['codigo'];
+            $asig_name = $asignaturas['nombre'];
+            $asig_idGrupo = $asignaturas['idGrupo'];
+            echo "<tr><td>$asig_id</td>
+                  <td>$asig_name</td>
+                  <td>$asig_idGrupo</td></tr>";
+        }
+        ?>
+        </tbody>
+
+    </table>
 </div>

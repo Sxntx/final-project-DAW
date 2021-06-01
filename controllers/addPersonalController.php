@@ -52,7 +52,7 @@ if (isset($_POST['guardar'])) {
         document.getElementById("lista").setAttribute('hidden', true);
     }
 
-    function appear() {//show inputs if studen or hidden if teacher..
+    function appear() {
         var tpuser = document.getElementById("tpuser");
         var rmHiden = document.getElementById("email");
         var lemail = document.getElementById("apEmail");

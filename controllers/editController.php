@@ -108,7 +108,7 @@ if (isset($_POST['actualizar'])) {// Update personal table
     <?php
     echo "<label>Personal Id: <input type='text' name='id' class='id' value=$id></label><br>
     <label>Nombre: <input type='text' name='nombre' class='nombre' value=$nombre></label><br>
-    <label>Apellidos: <input type='text' name='apellidos' class='apellidos' value='$apellidos'></label><br>
+    <label>Apellidos: <input type='text' name='apellidos' class='apellidos' value=$apellidos></label><br>
     <label>Nick/Usuario: <input type='text' name='usuario' class='usuario' value=$usuario></label><br>
     <label>Contraseña: <input type='text' name='contrasenya' class='contrasenya' value=$contrasenya></label><br>";
     if ($idTipoUsuario == 2) {
