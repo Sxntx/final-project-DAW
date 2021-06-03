@@ -25,7 +25,9 @@ function confirmar (){
   <div class="row mb-3">
       <a href="addPersonalController.php">Añade (+)</a>
   </div>
-  <table class="col6 table">
+
+    <div class="overflow-auto" style="height: 400px;">
+  <table class="col6 table overflow-auto">
 
     <thead>
       <th>id</th>
@@ -64,20 +66,21 @@ function confirmar (){
 
       </tbody>
   </table>
-
+    </div>
     <!-- GRUPOS -->
     <div class="row">
         <div class="col-md-12 text-center h3 mt-5 mb-5">
             Añade, edita y/o elimina Grupos.
         </div>
     </div>
-
+    <div class="overflow-auto" style="height: 400px;">
     <table  class="col6 table">
         <thead>
         <th>id</th>
         <th>nombre</th>
         <th>aula</th>
         <th>idProfesor</th>
+        <th></th>
         </thead>
         <tbody>
         <?php
@@ -99,6 +102,7 @@ function confirmar (){
         </tbody>
 
     </table>
+    </div>
 
     <!--  ASIGNATURAS  -->
     <div class="row">
@@ -107,6 +111,7 @@ function confirmar (){
         </div>
     </div>
 
+    <div class="overflow-auto" style="height: 400px;">
     <table  class="col6 table">
         <thead>
         <th>id(codigo)</th>
@@ -128,4 +133,5 @@ function confirmar (){
         </tbody>
 
     </table>
+    </div>
 </div>

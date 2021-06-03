@@ -45,6 +45,7 @@ if (isset($_POST['actualizar'])) {// Update personal table
     $selecPersonal = mysqli_query($conn, "SELECT * FROM Personal WHERE id = '$id'");//set to change data if tipeuser
     while ($rw = $selecPersonal->fetch_assoc()) {
         $id_user_type = $rw['idTipoUsuario'];
+
     }
     if ($id_user_type == 2) {//alumno
         $n_alumn_name = $_POST['nombre'];
@@ -83,6 +84,16 @@ if (isset($_POST['actualizar'])) {// Update personal table
         $n_profe_email = $_POST['pemail'];
         $n_profe_tel = $_POST['ptel'];
 
+        $other = $id  - 108;//idPersonal - 108 get id Profesor  OK DONE
+        $updt_one = mysqli_query($conn, "UPDATE Grupo set idProfesor = '$other'
+                                                            WHERE id = '$n_profe_idCurs'");
+
+    /*Not add functionality of chagin viceverse id's
+    Profeid = 0 -> groupId =0 to groupId = 1 where profeId = 4 then
+    Profeid = 4 to groupId =0; avoid because maybe we want to change profe Id from groupId, but we wont
+    viceversa change ... this give us more adaptability
+    */
+
         $updt_personalPro_tbl = mysqli_query($conn,//OK
             "UPDATE Personal set nombre = '$n_profe_name', apellidos = '$n_profe_lastname',
                                 usuario = '$n_profe_user', contrasenya = '$n_profe_pass',
@@ -90,7 +101,8 @@ if (isset($_POST['actualizar'])) {// Update personal table
             WHERE id = '$id'");
 
         $updt_profe_tbl = mysqli_query($conn,
-            "UPDATE Profesor set Email = '$n_profe_email', Telefono = '$n_profe_tel'");
+            "UPDATE Profesor set Email = '$n_profe_email', Telefono = '$n_profe_tel'
+            WHERE idPersonal = '$id'");
 
         if (!$updt_personalPro_tbl){
             echo "Error updating personal table";

@@ -1,6 +1,7 @@
 <?php
 include('bd.php');
 include('..//views/common/header.php');
+$ext = 108;
 if (isset($_GET['id'])){
     $grupo_id = $_GET['id'];
     $q = mysqli_query($conn, "SELECT * FROM Grupo WHERE id = '$grupo_id'");
@@ -10,13 +11,21 @@ if (isset($_GET['id'])){
         $bd_aula = $r['aula'];
         $bd_idprofe = $r['idProfesor'];
     }
+    $ext+=$bd_idprofe;
+
+    $typ = gettype($ext);
 
 }
 
 if (isset($_POST['btn_upt_gp'])){
+    $n_id = $_POST['i_id'];
     $n_name = $_POST['i_name'];
     $n_aula = $_POST['i_aula'];
     $n_idProfe = $_POST['i_idprofe'];
+
+
+    $update_personal_idCurso = mysqli_query($conn, "UPDATE Personal set idCurso = '$n_id'
+                                                            WHERE id = '$ext'");
 
     $insert_query = mysqli_query($conn, "UPDATE Grupo set nombre = '$n_name', aula = '$n_aula', 
                                                                  idProfesor = '$n_idProfe' WHERE id = '$grupo_id' ");
@@ -36,7 +45,7 @@ document.getElementById("lista").setAttribute('hidden', true);
 }
 </script>
 <form class='' action="editGroup.php?id=<?php echo $_GET['id']; ?>" method='POST'>
-<?php echo "
+<?php echo "$ext
 <label>id:<input type='number' name='i_id' id='i_id' value=$bd_id></label><br>
 <label>nombre: <input type='text' name='i_name' id='i_name' value='$bd_nombre'></label><br>
 <label>aula: <input type='number' name='i_aula' id='i_aula' value=$bd_aula></label><br>
