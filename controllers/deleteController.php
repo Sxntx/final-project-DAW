@@ -13,12 +13,12 @@ include('bd.php');
           $usuario = $row['usuario'];
           $idTipoUsuario = $row['idTipoUsuario'];
       }
-
-      if ($idTipoUsuario  == 1 ){//OK if is profesor
+    $confirmaDelete  = $_COOKIE['borrar'];
+      if ($idTipoUsuario  == 1 && $confirmaDelete == true){//OK if is profesor
           $q_del_personal = mysqli_query($conn, "DELETE FROM Personal WHERE id = '$id'");
           $q_del_profe = mysqli_query($conn, "DELETE FROM Profesor WHERE idPersonal = '$id'");
           header('Refresh:0; url=admin.php');
-      }elseif ($idTipoUsuario == 2){//OK if is alumno
+      }elseif ($idTipoUsuario == 2 && $confirmaDelete == true){//OK if is alumno
           $q_del_a_personal = mysqli_query($conn, "DELETE FROM Personal WHERE id = '$id'");
           $nExpediente = 'SF'.$id;
           $q_del_alumno = mysqli_query($conn, "DELETE FROM Alumno WHERE nExp = '$nExpediente'");;

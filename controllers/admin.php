@@ -5,6 +5,25 @@ $_SESSION['logged'] = true;
 include('..//views/common/header.php');
 ?>
 <script>
+    function delAsig() {
+        if (!confirm('Seguro que quieres borrar la asignatura?')){
+            document.cookie = "borrarAsignatura=false; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+            alert('operacion cancelada');
+        }else{
+            document.cookie = "borrarAsignatura=true";
+            window.location = "deleteAsignatura.php";
+        }
+
+    }
+    function deleteGrupo() {
+    if (!confirm("Seguro que quieres borrar este grupo?")){
+        document.cookie = "borrarGrupo=false; expires=Thu, 01 Jan 1970 00:00:00 UTC;"
+        alert('operacion cancelada');
+    }else{
+        document.cookie = "borrarGrupo=true";
+        window.location = "deleteGroup.php";
+    }
+    }
 function confirmar (){
   if(!confirm("Seguro que quieres borrar")){
     document.cookie = "borrar=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
@@ -73,6 +92,9 @@ function confirmar (){
             Añade, edita y/o elimina Grupos.
         </div>
     </div>
+    <div class="row mb-3">
+        <a href="addGrupoController.php">Añade (+)</a>
+    </div>
     <div class="overflow-auto" style="height: 400px;">
     <table  class="col6 table">
         <thead>
@@ -96,7 +118,7 @@ function confirmar (){
                   <td>$grupo_tutor</td>
                   <td>";?>
                   <a href="editGroup.php?id=<?php echo $grupo['id']?>" class='btn btn-secondary'>Edit</a>
-                  <a href='deleteGroup.php?id=<?php echo $grupo['id']?>' class='btn btn-danger'>Detele</a>
+                  <a href='deleteGroup.php?id=<?php echo $grupo['id']?>' class='btn btn-danger' onclick="deleteGrupo()">Detele</a>
                    <?php echo"</td></tr>"; } ?>
 
         </tbody>
@@ -110,13 +132,16 @@ function confirmar (){
             Añade, edita y/o elimina Asignaturas.
         </div>
     </div>
-
+    <div class="row mb-3">
+        <a href="addAsignaturasController.php">Añade (+)</a>
+    </div>
     <div class="overflow-auto" style="height: 400px;">
     <table  class="col6 table">
         <thead>
         <th>id(codigo)</th>
         <th>nombre</th>
         <th>idGrupo</th>
+        <th></th>
         </thead>
         <tbody>
         <?php
@@ -127,11 +152,17 @@ function confirmar (){
             $asig_idGrupo = $asignaturas['idGrupo'];
             echo "<tr><td>$asig_id</td>
                   <td>$asig_name</td>
-                  <td>$asig_idGrupo</td></tr>";
-        }
-        ?>
+                  <td>$asig_idGrupo</td>
+                  <td>";?>
+        <a href="editAsignatura.php?id=<?php echo $asignaturas['codigo']?>" class='btn btn-secondary'>Edit</a>
+        <a href='deleteAsignatura.php?id=<?php echo $asignaturas['codigo']?>' class='btn btn-danger' onclick="delAsig()">Detele</a>
+        </td>
+                 <?php echo "</tr>";  }?>
+
+
         </tbody>
 
     </table>
     </div>
 </div>
+<?php include('..//views/common/footer.php');?>
