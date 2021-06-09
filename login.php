@@ -1,4 +1,4 @@
-<?php include('views/common/header.php'); session_start();session_destroy(); session_unset();?>
+<?php include('views/common/header.php'); session_unset();?>
 <div class="loginpanel text-center">
 
         <h2>Inicia la sessió</h2>

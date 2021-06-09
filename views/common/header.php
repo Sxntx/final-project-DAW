@@ -26,7 +26,7 @@
         <div class="col-6">
 
           <p id='session' class='float-right'>No heu iniciat sessió
-          <a href='login.php' class='text-info'>(Inicia sesió)</a>
+          <a href='../login.php' class='text-info'>(Inicia sesió)</a>
 
            </p>
         </div>

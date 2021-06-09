@@ -21,6 +21,8 @@ if (isset($_POST['guardar'])) {
         $insAlu = mysqli_query($conn, "INSERT INTO Alumno(nombre, apellidos, anyoNacimiento, nExp)
         VALUES ('$nombre', '$apellidos', '$fnac', '$nExp')");
 
+        echo    "<script>alert('Alumno guardado exitosamente')</script>";
+
     }
 
     if ($idTipoUsuario == 1) {//if teacher save data into profesor table (1)
@@ -31,6 +33,8 @@ if (isset($_POST['guardar'])) {
         $idPers = $row['id'];
         mysqli_query($conn, "INSERT INTO Profesor(idPersonal, Email, Telefono)
    VALUES ('$idPers', '$email', '$tel')");
+
+        echo    "<script>alert('Profesor guardado exitosamente')</script>";
     }
 
     if (!$query) {
