@@ -6,6 +6,7 @@ $password = $_POST['password'];
 $res = mysqli_query($conn, "SELECT * FROM Personal WHERE usuario  = '$username'
                                                                   AND contrasenya = '$password'");
 $row = mysqli_fetch_array($res, MYSQLI_ASSOC);
+$idpers = $row['id'];
 $bduser = $row['usuario'];
 $bdpass = $row['contrasenya'];
 $usertype = $row['idTipoUsuario'];
@@ -24,6 +25,11 @@ if ($username !== $bduser || $password !== $bdpass) {
         }
         if ($usertype == 1 && $cursoid > 0) {
             echo "<script>alert('Bienvenido profe')</script>";
+            $consulta = mysqli_query($conn, "SELECT * FROM Profesor WHERE idPersonal = '$idpers'");
+            while ($r = $consulta->fetch_assoc()){
+                $idProfe = $r['id'];
+            }
+            $_SESSION['idpr'] = $idProfe;
             $_SESSION['profeLoged'] = true;
             $_SESSION['idCurso'] = $cursoid;
             header('Refresh:0; url=../views/profeView.php');
