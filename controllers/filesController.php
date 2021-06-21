@@ -66,14 +66,14 @@ VALUES ('$titulo', '$descripcion', '$fecha', '$idprofe', '$codigoAsig', '$archiv
                 echo "error saving  at db";
             }else{
                 echo "<script>alert('Homework saved!')</script>";
-                header("Refresh:0;url=../views/profeView_basic.php");
+                header("Refresh:0;url=profeView_basic.php");
             }
 
             echo "The file " . htmlspecialchars(basename($_FILES['file']['name'])) . "
 has been uploaded<br>";
         } else {
             echo "";
-            header("Refresh:0;url=../views/profeView_basic.php");
+            header("Refresh:0;url=profeView_basic.php");
         }
     }
 

@@ -7,7 +7,7 @@ if (!$_GET['id']){
     $idTarea = $_GET['id'];
     $q = mysqli_query($conn, "DELETE FROM Deberes WHERE id = '$idTarea'");
     echo "<script>alert('Borrado con éxito')</script>";
-    header("Refresh:0;url=../views/profeView_basic.php");
+    header("Refresh:0;url=profeView_basic.php");
 }
 
 

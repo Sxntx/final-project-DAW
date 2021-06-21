@@ -15,10 +15,10 @@
   <div class="container">
     <div class="row mt-5">
       <div class="col-6">
-        <img src="imgs/logo_main.png" class="float-right" alt="">
+        <img src="views/common/imgs/logo_main.png" id="consll" class="float-right" alt=" connselleria-logo">
       </div>
       <div class="col-6">
-        <img src="imgs/logo_moodle.png" alt="">
+        <img src="views/common/imgs/logo_moodle.png" id="moodl" alt="moddle logo">
       </div>
     </div>
   </div>
