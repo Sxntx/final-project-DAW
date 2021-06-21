@@ -20,14 +20,28 @@ if (isset($_POST['btn-file'])) {
         } else {
             echo "File is not an  image<br>";
         }
-    }
+    } else {
+        $titulo = $_POST['titulo'];
+        $descripcion =  $_POST['textarea'];
+        $fecha = date('Y-m-d H:i:s');
+        $qa = mysqli_query($conn, "SELECT * FROM Asignatura WHERE idGrupo = '$idcurso' AND
+idProfe = '$idprofe'");
 
+        while ($r =  $qa->fetch_assoc()){
+            $codigoAsig = (int)$r['codigo'];
+        }
+        $archivo  = null;
+
+        $q_o = mysqli_query($conn, "INSERT INTO Deberes (titulo, descripcion, fecha, idprofe, idGrupo)
+VALUES ('$titulo','$descripcion', '$fecha', '$idprofe', '$codigoAsig')");
+    }
+/*Check if file already exist
     if (file_exists($target_file)) {
         echo "Archivo ya existente<br>";
         $uploadOK = 0;
     }
-
-    if ($_FILES['file']['size'] > 500000) {
+*/
+    if ($_FILES['file']['size'] > 50000000) {
         echo "Archivo muy grande";
         $uploadOK = 0;
     }
@@ -58,7 +72,8 @@ VALUES ('$titulo', '$descripcion', '$fecha', '$idprofe', '$codigoAsig', '$archiv
             echo "The file " . htmlspecialchars(basename($_FILES['file']['name'])) . "
 has been uploaded<br>";
         } else {
-            echo "Was an error while uploading  your file";
+            echo "";
+            header("Refresh:0;url=../views/profeView_basic.php");
         }
     }
 

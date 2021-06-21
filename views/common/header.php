@@ -14,7 +14,7 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <!--JS custom-->
-    <script src="../final/controllers/javaScript.js" charset="utf-8"></script>
+    <script src="javaScript.js" charset="utf-8"></script>
     <title>IES Son Ferrer</title>
   </head>
   <body>
@@ -25,8 +25,16 @@
         </div>
         <div class="col-6">
 
-          <p id='session' class='float-right'>No heu iniciat sessió
-          <a href='login.php' class='text-info'>(Inicia sesió)</a>
+          <p id='session' class='float-right'><?php
+              if (!isset($_SESSION['logged'])) {
+                  echo "No heu iniciat sessió 
+                  <a href='login.php' class='text-info'>(Inicia sesió)</a>";
+              }else{
+              echo "Tanca sessió 
+              <a href='../login.php' class='text-info'>(Tanca)</a>";
+              }
+              ?>
+
 
            </p>
         </div>

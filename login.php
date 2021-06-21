@@ -1,4 +1,4 @@
-<?php include('views/common/header.php'); session_unset();?>
+<?php include('views/common/header.php');session_start();session_destroy();?>
 <div class="loginpanel text-center">
 
         <h2>Inicia la sessió</h2>
@@ -32,7 +32,7 @@
                 <input id="anchor" type="hidden" name="anchor" value="">
                 <script>document.getElementById('anchor').value = location.hash;</script>
                 <input type="hidden" name="logintoken" value="fSCF4BeInytUnbeoN2mYNSFZCPBidFGr">
-                <input type="submit" id="loginbtn" value="Inicia la sessió">
+                <input type="submit" name="loginbtn" id="loginbtn" value="Inicia la sessió">
                 <div class="forgetpass">
                     <a href="https://aulavirtual.caib.es/c07008363/login/forgot_password.php">Heu oblidat el nom d'usuari o la contrasenya?</a>
                 </div>

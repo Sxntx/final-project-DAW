@@ -1,6 +1,6 @@
 <?php
-include '../views/common/header.php';
-include "../controllers/bd.php";
+include "bd.php";
+include "../views/common/header.php";
 
 $idcurso = (int)$_SESSION['idCurso'];
 $idprofe = (int)$_SESSION['idpr'];
@@ -10,9 +10,37 @@ if ($_SESSION['selectable']) {
 }
 
 ?>
+<style>
+    .ocultar{
+        display: none;
+    }
+    .mostrar{
+        display: block;
+    }
+</style>
 <script>
+    function again() {
+        var ocultos = document.getElementsByClassName('ocultar');
+        for (const oculto of ocultos) {
+            oculto.classList.remove('ocultar');
+            oculto.classList = 'card text-center mb-3';
+        }
+    document.getElementById('btn_mnuevo').remove();
+
+
+    }
     function oculta(e) {
-    e.parentNode.parentNode.style.display = 'none';
+        var tarea = e.parentNode.parentNode;
+        if (tarea.className != 'ocultar'){
+            tarea.className =  'ocultar';
+            var btn = document.createElement('button');
+            var txt = document.createTextNode('mostrar de nuevo');
+            btn.setAttribute('id',  'btn_mnuevo');
+            btn.setAttribute('onclick', 'again()');
+            btn.appendChild(txt);
+
+            tarea.parentNode.append(btn);
+        }
     }
 </script>
     <div class="container">
@@ -20,7 +48,6 @@ if ($_SESSION['selectable']) {
             <div class="col-12 h5 mt-3"> Curso id <?php echo $_SESSION['selectable'] ?></div>
         </div>
     </div>
-
     <div class="container">
         <div class="row text-center h3">
             <div class="col-12">
@@ -65,7 +92,7 @@ AND idGrupo = '$codigo'");
                         $fecha = $row['fecha'];
                         $archivo = $row['archivo'];
 
-                        echo "<div class=\"card text-center\">
+                        echo "<div class=\"card text-center mb-3\">
   <div class=\"card-header\">
     <p class='float-left h5'>Tarea</p>
     <a href='../controllers/editTarea.php?id=$id' class='btn btn-warning btn-sm float-right'>Editar</a>
@@ -75,7 +102,7 @@ AND idGrupo = '$codigo'");
   <div class=\"card-body\">
     <h5 class=\"card-title\">$titulo</h5>
     <p class=\"card-text\">$descrip</p>
-    <a href=\"#\" class=\"btn btn-primary\">$archivo</a>
+    <a href=\"../controllers/archivos_profes/$archivo\" class=\"btn btn-primary\">$archivo</a>
   </div>
   <div class=\"card-footer text-muted\">
     $fecha
