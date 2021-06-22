@@ -34,6 +34,21 @@ if (isset($_POST['btn_upt_gp'])){
     }else   header("Refresh:0;url=admin.php");
 
 }
+
+
+//Codigo para corregir error de rutas imgs
+echo "<script>
+                
+                document.addEventListener('DOMContentLoaded', function() {
+                  var src1 = document.getElementById('img_dep').src = '../views/common/imgs/departament.png';
+                    var src2 = document.getElementById('img_ninios').src = '../views/common/imgs/niños-estudiando.jpg';
+                    var src3 = document.getElementById('consll').src = '../views/common/imgs/logo_main.png';
+                    var src4 = document.getElementById('moodl').src =  '../views/common/imgs/logo_moodle.png';
+                    var src5 = document.getElementById('sonfe_text').href =  '../index.php';
+                }) 
+                    
+                  </script>";
+
 ?>
 <script>
 function muestra() {//show clas ids
@@ -44,8 +59,13 @@ function oculta() {//hidde clas id
 document.getElementById("lista").setAttribute('hidden', true);
 }
 </script>
+
+<div class="container text-center mb-5">
+    <div class="row">
+        <div class="col-12 h2 mt-5 mb-5"> Edita grupo</div>
+    </div>
 <form class='' action="editGroup.php?id=<?php echo $_GET['id']; ?>" method='POST'>
-<?php echo "$ext
+<?php echo "
 <label>id:<input type='number' name='i_id' id='i_id' value=$bd_id></label><br>
 <label>nombre: <input type='text' name='i_name' id='i_name' value='$bd_nombre'></label><br>
 <label>aula: <input type='number' name='i_aula' id='i_aula' value=$bd_aula></label><br>
@@ -86,3 +106,7 @@ document.getElementById("lista").setAttribute('hidden', true);
     </small><br><br>
     <button type='submit' name='btn_upt_gp' class='btn btn-info'>save</button>
 </form>
+</div>
+
+<?php
+include '../views/common/footer.php';

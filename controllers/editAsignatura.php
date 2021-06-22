@@ -32,19 +32,36 @@ if (isset($_GET['id'])){
 }
 
 
+
+//Codigo para corregir error de rutas imgs
+echo "<script>
+                
+                document.addEventListener('DOMContentLoaded', function() {
+                  var src1 = document.getElementById('img_dep').src = '../views/common/imgs/departament.png';
+                    var src2 = document.getElementById('img_ninios').src = '../views/common/imgs/niños-estudiando.jpg';
+                    var src3 = document.getElementById('consll').src = '../views/common/imgs/logo_main.png';
+                    var src4 = document.getElementById('moodl').src =  '../views/common/imgs/logo_moodle.png';
+                    var src5 = document.getElementById('sonfe_text').href =  '../index.php';
+                }) 
+                    
+                  </script>";
+
+
     echo "
-    <div class='container text-center'>
+    <div class='container text-center mt-5'>
     <div class='row h2'>
     <div class='col-12'>
     Edita asignatura
 </div></div>
 </div>
+<div class='container text-center mt-5 mb-5'>
 <form action='editAsignatura.php' method='POST'>
         <label>Código: <input type='number' id='codigo' name='codigo' value=$codigo></label><br>
         <label for=''>nombre: <input type='text' id='nombre' name='nombre' value=$nombre></label><br>
         <label for=''>id grupo: <input type='number' name='idgrupo' id='idgrupo' value=$idGrupo></label><br>
         <input type='submit' class='btn btn-success' name='editarbtn' id='editarbtn' value='guardar'>
     </form>
+    </div>
     ";
 
 include '..//views/common/footer.php'

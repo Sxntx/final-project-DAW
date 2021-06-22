@@ -45,6 +45,17 @@ if (isset($_POST['guardar'])) {
     }
 }
 
+echo "<script>
+                
+                document.addEventListener('DOMContentLoaded', function() {
+                  var src1 = document.getElementById('img_dep').src = '../views/common/imgs/departament.png';
+                    var src2 = document.getElementById('img_ninios').src = '../views/common/imgs/niños-estudiando.jpg';
+                    var src3 = document.getElementById('consll').src = '../views/common/imgs/logo_main.png';
+                    var src4 = document.getElementById('moodl').src =  '../views/common/imgs/logo_moodle.png';
+                    var src5 = document.getElementById('sonfe_text').href =  '../index.php';
+                }) 
+                    
+                  </script>";
 
 ?>
 <script>
@@ -89,6 +100,12 @@ if (isset($_POST['guardar'])) {
 
     }
 </script>
+<div class="container text-center mt-5 mb-5">
+    <div class="row mb-3">
+        <div class="col-12 h3">
+            Añade personal
+        </div>
+    </div>
 <form class="" action="addPersonalController.php" method="post">
     <label>Nombre: </label><input type="text" name="nombre" value=""><br>
     <label>Apellidos:</label><input type="text" name="apellidos" value=""><br>
@@ -126,3 +143,8 @@ if (isset($_POST['guardar'])) {
                                                            placeholder="YYYY/MM/DD"><br>
     <button type="submit" name="guardar" class="btn btn-success">Save</button>
 </form>
+</div>
+
+
+<?php
+include '../views/common/footer.php';

@@ -115,7 +115,27 @@ if (isset($_POST['actualizar'])) {// Update personal table
 
 }
 
+
+//Codigo para corregir error de rutas imgs
+echo "<script>
+                
+                document.addEventListener('DOMContentLoaded', function() {
+                  var src1 = document.getElementById('img_dep').src = '../views/common/imgs/departament.png';
+                    var src2 = document.getElementById('img_ninios').src = '../views/common/imgs/niños-estudiando.jpg';
+                    var src3 = document.getElementById('consll').src = '../views/common/imgs/logo_main.png';
+                    var src4 = document.getElementById('moodl').src =  '../views/common/imgs/logo_moodle.png';
+                    var src5 = document.getElementById('sonfe_text').href =  '../index.php';
+                }) 
+                    
+                  </script>";
+
 ?>
+<div class="container text-center mt-5 mb-5">
+    <div class="row mb-3">
+        <div class="col-12 h3">
+                Edita personal
+        </div>
+    </div>
 <form class='' action="editController.php?id=<?php echo $_GET['id']; ?>" method='POST'>
     <?php
     echo "<label>Personal Id: <input type='text' name='id' class='id' value=$id></label><br>
@@ -132,8 +152,11 @@ if (isset($_POST['actualizar'])) {// Update personal table
     }
     echo "<label>Tipo usuario id:<input type='text' name='idTipoUsuario' class='idTipoUsuario' value=$idTipoUsuario></label><br
     <label>Curso id: <input type='text' name='idCurso' class='idCurso' value=$idCurso></label><br>
-  <button type='submit' name='actualizar' class='btn btn-info'>save</button>
-  </form>";
+  <button type='submit' name='actualizar' class='btn btn-info mt-3 '>save</button>
+  </form>
+  </div>
+  ";
+
 
     ?>
     <script>
@@ -149,3 +172,6 @@ if (isset($_POST['actualizar'])) {// Update personal table
         })
 
     </script>
+
+    <?php
+include '../views/common/footer.php';

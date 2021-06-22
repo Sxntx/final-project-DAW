@@ -45,6 +45,20 @@ if (isset($_POST['btn_seleccion'])) {
 
 $q  = mysqli_query($conn, "SELECT * FROM Personal WHERE 
                                         idTipoUsuario = 2  AND idCurso = '$idcurso_notutor'");
+//Codigo para corregir error de rutas imgs
+echo "<script>
+                
+                document.addEventListener('DOMContentLoaded', function() {
+                  var src1 = document.getElementById('img_dep').src = '../views/common/imgs/departament.png';
+                    var src2 = document.getElementById('img_ninios').src = '../views/common/imgs/niños-estudiando.jpg';
+                    var src3 = document.getElementById('consll').src = '../views/common/imgs/logo_main.png';
+                    var src4 = document.getElementById('moodl').src =  '../views/common/imgs/logo_moodle.png';
+                    var src5 = document.getElementById('sonfe_text').href =  '../index.php';
+                }) 
+                    
+                  </script>";
+
+
 echo "<form method='post' action='faltas.php'>
  <table class='table table-stribed'><thead>
     <th>id</th>
