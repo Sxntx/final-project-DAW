@@ -47,7 +47,7 @@ echo "<script>
                     var src5 = document.getElementById('sonfe_text').href =  '../index.php';
                 }) 
                     
-                  </script>";
+                  </script>";2
 
 ?>
 <script>

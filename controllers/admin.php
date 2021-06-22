@@ -60,7 +60,7 @@ function confirmar (){
     <div class="overflow-auto" style="height: 400px;">
   <table class="col6 table overflow-auto">
 
-    <thead>
+    <thead class="sticky-top bg-light">
       <th>id</th>
       <th>nombre</th>
       <th>apellidos</th>
@@ -109,7 +109,7 @@ function confirmar (){
     </div>
     <div class="overflow-auto" style="height: 400px;">
     <table  class="col6 table">
-        <thead>
+        <thead class="sticky-top bg-light">
         <th>id</th>
         <th>nombre</th>
         <th>aula</th>
@@ -149,7 +149,7 @@ function confirmar (){
     </div>
     <div class="overflow-auto" style="height: 400px;">
     <table  class="col6 table">
-        <thead>
+        <thead class="sticky-top bg-light">
         <th>id(codigo)</th>
         <th>nombre</th>
         <th>idGrupo</th>

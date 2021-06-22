@@ -9,13 +9,13 @@ $idprofe = $_SESSION['idpr'];
 //Todas las asignaturas que imparte un profesor
 $q_asignatura = mysqli_query($conn, "SELECT * FROM Asignatura WHERE idProfe = '$idprofe'");
 echo "
-<div class='container'>
-<div class='row text-center'>
+<div class='container mt-3 mb-5'>
+<div class='row text-center mb-5'>
 <div class='col-12 h3'>Selecciona curso</div>
 </div>
-</div>
+<div class='text-center'>
 <form action='../controllers/faltas.php' method='post'>
-<select name='selectable'>
+<select name='selectable' class='mb-3'>
 <option value='none'></option>";
 while ($r = $q_asignatura->fetch_assoc()){
     $codigo = $r['codigo'];
@@ -24,9 +24,12 @@ while ($r = $q_asignatura->fetch_assoc()){
     echo "<option value='$id_g'>Curso:$nombre, Grupo:$id_g</option>";
 }
 echo"
-</select>
+</select><br>
 <input type='submit' name='btn_seleccion' value='pasar lista' class='btn btn-info'>
-</form>";
+</form>
+</div>
+</div>
+";
 echo "<script>
                 
                 document.addEventListener('DOMContentLoaded', function() {
