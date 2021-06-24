@@ -19,11 +19,11 @@ echo "<script>
 
 echo "<div class='container mt-3'>
         <div class='row'>
-            <div class='col-4 h4'>
-    Hola, ".$_SESSION['nombre']."
+            <div class='col-4 h4' >
+    <div class=' pt-2 pb-2 pl-2'   style='background-color: #4E006D;color: aliceblue'>Hola, ".$_SESSION['nombre']."</div>
             </div>
             <div class='col-8 mt-5 mb-5'>
-                <div class='h5 mb-5 border-bottom'>Tus asignaturas</div>
+                <div class='h5 mb-5 border-bottom pt-2 pb-2 pl-2' style='background-color: #4E006D;color: aliceblue'>Tus asignaturas</div>
                 <div class='row'>
                 ";
 $idCurso = $_SESSION['idCurso'];
@@ -36,20 +36,32 @@ while ($r = $q->fetch_assoc()){
     if ($cont % 2 == 0){
             echo '</div><div class="row">';
     }else {
+        $cod_asig = $r['codigo'];
         $asignatura = $r['nombre'];
+        $idProfe = $r['idProfe'];
+        $q_profe = mysqli_query($conn, "SELECT * FROM Profesor WHERE id = '$idProfe'");
+        while ($rs = $q_profe->fetch_assoc()){
+            $idpers = $rs['idPersonal'];
+        }
+        $q_name = mysqli_query($conn, "SELECT * FROM Personal WHERE id = '$idpers'");
+        while ($w = $q_name->fetch_assoc()){
+            $name_profe = $w['nombre'];
+            $apellido = $w['apellidos'];
+        }
+
         echo '
 <div class="col-md-4">
-<div class="card mb-2">
-                  <div class="card-header">
+<a href="entrega_deberes.php?asig='.$cod_asig.'&idprofe='.$idProfe.'"><div class="card mb-4" onmouseover="movement(this)" onmouseleave="dismov(this)" ">
+                  <div class="card-header h6">
                     ' . $asignatura . '
                   </div>
                   <div class="card-body">
                       <blockquote class="blockquote mb-0">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                      <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+                      <p></p>
+                      <footer class="blockquote-footer"> <cite title="Source Title">'.$name_profe.' '.$apellido.'</cite></footer>
                       </blockquote>
                    </div>
-               </div> </div>';
+               </div></a> </div>';
     }
 
 }

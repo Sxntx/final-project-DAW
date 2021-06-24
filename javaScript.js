@@ -3,6 +3,7 @@ function asigna(btn) {
     this.btn = btn;
     console.log(this.btn);//boton actual pulsado
     var next = btn.parentNode.parentNode.nextSibling; //siguiente row
+
     if (next.hidden != true) {
         next.setAttribute('hidden', true);
     } else {
@@ -11,20 +12,27 @@ function asigna(btn) {
             trtoHide[i].setAttribute('hidden', true);
             console.log(trtoHide[i]);
         }
-
         console.log(trtoHide);
 
         //trtoHide.setAttribute('hidden', true);
         next.removeAttribute('hidden');
     }
-
     console.log(next);
 };
 
-window.onload = () => {
+function movement(e) {
+    e.style.transform = "scale(1.2, 1.3)";
+    e.style.boxShadow = "20px 20px 20px lightblue";
 
-    //TODO: hacer que cuando detecte session true me cambie las rutas de las imgs
-//para que todo este bien
+}
+
+function dismov(e){
+    e.style.transform = "scale(1,1)";
+    e.style.boxShadow = "0px 0px 0px ";
+}
+
+
+window.onload = () => {
 
     function confirmar() {//function to confim delete user
         if (confirm('Seguro que quieres borrar')) {

@@ -42,6 +42,7 @@ $cursoid = $row['idCurso'];
             setcookie("logedAlumno", true);
             $_SESSION['nombre'] = $dbnombre;
             $_SESSION['idCurso'] = $cursoid;
+            $_SESSION['idpers'] = $idpers;
             $_SESSION['al_logged'] = true;
             header('Refresh:0; url=alumnoView_basic.php');
             $_SESSION['logged'] = true;
