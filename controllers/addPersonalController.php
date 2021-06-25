@@ -1,5 +1,9 @@
-<?php include('../views/common/header.php');
-include('bd.php');
+<?php
+
+include'bd.php';
+
+include('../views/common/header.php');
+
 
 if (isset($_POST['guardar'])) {
     $nombre = $_POST['nombre'];
@@ -8,9 +12,13 @@ if (isset($_POST['guardar'])) {
     $contrasenya = $_POST['contrasenya'];
     $idTipoUsuario = $_POST['idTipoUsuario'];
     $idCurso = $_POST['idCurso'];
+
+    /*ENCRYPTIN PASSWORD*/
+    $hash = password_hash($contrasenya, PASSWORD_DEFAULT);
+
     $query = mysqli_query($conn,
         "INSERT INTO Personal(nombre,apellidos,usuario,contrasenya,idTipoUsuario,idCurso)
-  VALUES ('$nombre', '$apellidos', '$usuario', '$contrasenya', '$idTipoUsuario', '$idCurso')");
+  VALUES ('$nombre', '$apellidos', '$usuario', '$hash', '$idTipoUsuario', '$idCurso')");
 
     if ($idTipoUsuario == 2) {//if studen save data into alumno table (2)
         $idPersonalA = mysqli_query($conn, "SELECT id FROM Personal ORDER BY id DESC LIMIT 1");
@@ -106,15 +114,29 @@ echo "<script>
             Añade personal
         </div>
     </div>
+
 <form class="" action="addPersonalController.php" method="post">
-    <label>Nombre: </label><input type="text" name="nombre" value=""><br>
-    <label>Apellidos:</label><input type="text" name="apellidos" value=""><br>
-    <label>Nick:</label><input type="text" name="usuario" value=""><br>
-    <label>Pass:</label><input type="password" name="contrasenya" value=""><br>
-    <label>Confirm Pass:</label><input type="password" name="contrasenyaDos" value=""><br>
-    <label>Tipo usuario:</label><input type="number" min="0" max="2" id="tpuser" name="idTipoUsuario" value=""
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+    <label>Nombre: </label><input type="text" class="form-control" name="nombre" value=""><br>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+    <label>Apellidos:</label><input type="text" class="form-control" name="apellidos" value=""><br>
+            </div>
+        </div>
+    </div>
+
+    <label>Nick:</label><input type="text" class="form-control" name="usuario" value=""><br>
+    <label>Pass:</label><input type="password" class="form-control" name="contrasenya" value=""><br>
+    <label>Confirm Pass:</label><input type="password" class="form-control" name="contrasenyaDos" value=""><br>
+    <label>Tipo usuario:</label><input type="number" class="form-control" min="0" max="2" id="tpuser" name="idTipoUsuario" value=""
                                        onchange="appear()"> <i><small>0 admin, 1 profesor, 2 alumnno</small></i><br>
-    <label>idCurso:</label><input type="number" min="-1" max="13" name="idCurso" value=""> <i id="show" onmouseover="muestra()"
+    <label>idCurso:</label><input type="number" class="form-control" min="-1" max="13" name="idCurso" value=""> <i id="show" onmouseover="muestra()"
                                                                                               onmouseout="oculta()"><small>ratón aquí
             para info</small></i><br>
     <small>
@@ -141,7 +163,7 @@ echo "<script>
     <label id="lmovil" hidden>tel:</label><input hidden type="tel" value="" name="tel" id="tel" placeholder="600000001"><br>
     <label id="apNac" hidden>año nacimiento</label> <input hidden type="date" id="anc" name="anyNac"
                                                            placeholder="YYYY/MM/DD"><br>
-    <button type="submit" name="guardar" class="btn btn-success">Save</button>
+    <button type="submit" name="guardar" class="btn btn-success">guarda</button>
 </form>
 </div>
 

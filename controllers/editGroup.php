@@ -66,10 +66,10 @@ document.getElementById("lista").setAttribute('hidden', true);
     </div>
 <form class='' action="editGroup.php?id=<?php echo $_GET['id']; ?>" method='POST'>
 <?php echo "
-<label>id:<input type='number' name='i_id' id='i_id' value=$bd_id></label><br>
-<label>nombre: <input type='text' name='i_name' id='i_name' value='$bd_nombre'></label><br>
-<label>aula: <input type='number' name='i_aula' id='i_aula' value=$bd_aula></label><br>
-<label>id profesor: <input type='number' name='i_idprofe' id='i_idprofe' value=$bd_idprofe></label><br>
+<label>id:<input type='number' name='i_id' class='form-control' id='i_id' value=$bd_id></label><br>
+<label>nombre: <input type='text' name='i_name' class='form-control' id='i_name' value='$bd_nombre'></label><br>
+<label>aula: <input type='number' name='i_aula' class='form-control' id='i_aula' value=$bd_aula></label><br>
+<label>id profesor: <input type='number' name='i_idprofe' class='form-control' id='i_idprofe' value=$bd_idprofe></label><br>
         ";
 ?>
     <i id="show" onmouseover="muestra()"

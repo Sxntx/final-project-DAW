@@ -44,15 +44,15 @@ echo "<script>
         </div>
 <form action="addGrupoController.php" method="post">
     <label for="">
-        nombre: <input type="text" name="nombreGrupo">
+        nombre: <input type="text" class="form-control" name="nombreGrupo">
     </label><br>
     <label for="">
-        aula: <input type="number" min="0" name="aulaGrupo">
+        aula: <input type="number" class="form-control" min="0" name="aulaGrupo">
     </label><br>
     <label for="">
-        idProfe: <input type="number" min="0" name="idProfe">
+        idProfe: <input type="number" class="form-control" min="0" name="idProfe">
     </label><br>
-    <input class="btn btn-success" type="submit" value="guardar" name="guarda">
+    <input class="btn btn-success mt-3" type="submit" value="guardar" name="guarda">
 </form>
     </div>
 

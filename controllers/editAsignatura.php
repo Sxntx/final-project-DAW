@@ -56,10 +56,10 @@ echo "<script>
 </div>
 <div class='container text-center mt-5 mb-5'>
 <form action='editAsignatura.php' method='POST'>
-        <label>Código: <input type='number' id='codigo' name='codigo' value=$codigo></label><br>
-        <label for=''>nombre: <input type='text' id='nombre' name='nombre' value=$nombre></label><br>
-        <label for=''>id grupo: <input type='number' name='idgrupo' id='idgrupo' value=$idGrupo></label><br>
-        <input type='submit' class='btn btn-success' name='editarbtn' id='editarbtn' value='guardar'>
+        <label>Código: <input type='number' id='codigo' class='form-control' name='codigo' value=$codigo></label><br>
+        <label for=''>nombre: <input type='text' id='nombre' class='form-control' name='nombre' value=$nombre></label><br>
+        <label for=''>id grupo: <input type='number' name='idgrupo' class='form-control' id='idgrupo' value=$idGrupo></label><br>
+        <input type='submit' class='btn btn-success' name='editarbtn' class='form-control' id='editarbtn' value='guardar'>
     </form>
     </div>
     ";

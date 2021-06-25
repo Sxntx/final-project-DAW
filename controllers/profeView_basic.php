@@ -59,7 +59,7 @@ echo "<script>
 </script>
     <div class="container">
         <div class="row text-center">
-            <div class="col-12 h5 mt-3"> Curso id <?php echo $_SESSION['selectable'] ?></div>
+            <div class="col-12 h5 mt-3"> Curso id actual <?php echo $_SESSION['selectable'] ?></div>
         </div>
     </div>
     <div class="container">

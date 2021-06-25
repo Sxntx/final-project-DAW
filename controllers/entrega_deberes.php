@@ -26,6 +26,12 @@ while ($r = $c_asig_name->fetch_assoc()) {
 }
 
 echo "<div class='container'>
+
+        <div class='row mt-2'>
+        <div class='col-12'>
+        <a href='alumnoView_basic.php' class='btn border-dark'> < Volver</a>
+</div>
+</div>
         <div class='row mt-4'>
             <div class='col-12 h3'> $nombre_asig</div>
         </div>";

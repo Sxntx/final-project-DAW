@@ -85,7 +85,7 @@ while ($r = $q->fetch_assoc()) {
 
 ?>
     </tbody></table>
-    <input type="submit" name="btn-faltas" class="btn btn-info" value="guarda">
+    <input type="submit" name="btn-faltas" class="btn btn-info ml-3" value="guarda">
     </form>
 
 

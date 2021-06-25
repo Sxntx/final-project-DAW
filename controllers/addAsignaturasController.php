@@ -39,9 +39,9 @@ if (isset($_POST['btnguarda'])){
         </div>
 
     <form action="addAsignaturasController.php" method="POST">
-        <label for="">nombre: <input type="text" required="required" name="nombre"></label><br>
-        <label for="">id grupo: <input type="number" name="idgp" id="idgp" required="required"></label><br>
-        <label for="">id profesor: <input type="number" name="idp" id="idp" required></label><br>
+        <label for="">nombre: <input type="text" class="form-control" required="required" name="nombre"></label><br>
+        <label for="">id grupo: <input type="number" class="form-control" name="idgp" id="idgp" min="-1" required="required"></label><br>
+        <label for="">id profesor: <input type="number" class="form-control" name="idp" id="idp" min="0" required></label><br>
         <input type="submit" name="btnguarda" value="guarda" class="btn btn-info mt-3">
     </form>
 

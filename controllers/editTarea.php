@@ -69,13 +69,13 @@ echo "
         </div>
     </div>
 <form action='editTarea.php' method='post'>
-<label hidden>id: <input type='number' name='id_d' value='$id'></label><br>
-<label>Título: <input type='text' name='titulo' value='$titulo'></label><br>
-<label>Fecha: <input type='date' name='fecha' value='$fecha' readonly></label><br>
-<label>Nuevo archivo: <input type='file' name='archivo' placeholder='$archivo'></label><br>
-<label>Descripcion: <textarea type='text' name='descripcion' placeholder='$descripcion'></textarea></label><br>
-<label hidden>ID Grupo: <input type='number' name='idgp' value='$idgp'></label>
-<label hidden>ID profe: <input type='date' name='idprofe' value='$idprofe' readonly></label><br>
+<label hidden>id: <input type='number' name='id_d' class='form-control' value='$id'></label><br>
+<label>Título: <input type='text' name='titulo' class='form-control' value='$titulo'></label><br>
+<label>Fecha: <input type='date' name='fecha' class='form-control' value='$fecha' readonly></label><br>
+<label>Nuevo archivo: <input type='file' name='archivo' class='form-control' placeholder='$archivo'></label><br>
+<label>Descripcion: <textarea type='text' name='descripcion' class='form-control' placeholder='$descripcion'></textarea></label><br>
+<label hidden>ID Grupo: <input type='number' name='idgp' class='form-control' value='$idgp'></label>
+<label hidden>ID profe: <input type='date' name='idprofe' class='form-control' value='$idprofe' readonly></label><br>
 
 <input type='submit' name='btn-up-tarea' class='btn btn-success'>
 </form>

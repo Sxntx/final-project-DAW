@@ -138,20 +138,20 @@ echo "<script>
     </div>
 <form class='' action="editController.php?id=<?php echo $_GET['id']; ?>" method='POST'>
     <?php
-    echo "<label>Personal Id: <input type='text' name='id' class='id' value=$id></label><br>
-    <label>Nombre: <input type='text' name='nombre' class='nombre' value=$nombre></label><br>
-    <label>Apellidos: <input type='text' name='apellidos' class='apellidos' value=$apellidos></label><br>
-    <label>Nick/Usuario: <input type='text' name='usuario' class='usuario' value=$usuario></label><br>
-    <label>Contraseña: <input type='text' name='contrasenya' class='contrasenya' value=$contrasenya></label><br>";
+    echo "<label>Personal Id: <input type='text' name='id' class=\"form-control\" value=$id></label><br>
+    <label>Nombre: <input type='text' name='nombre' class=\"form-control\" value=$nombre></label><br>
+    <label>Apellidos: <input type='text' name='apellidos'class=\"form-control\" value=$apellidos></label><br>
+    <label>Nick/Usuario: <input type='text' name='usuario' class=\"form-control\" value=$usuario></label><br>
+    <label>Contraseña: <input type='text' name='contrasenya' class=\"form-control\" value=$contrasenya></label><br>";
     if ($idTipoUsuario == 2) {
-        echo "<label><mark>Fecha Nacimiento:</mark> <input hidden type='date' name='fnac' id='fnac' value='$fnac'></label><br>
-        <label><mark>Num Expe: </mark><input hidden type='text' name='numExpe' id='numExp' value='$numExp'></label><br>";
+        echo "<label><mark>Fecha Nacimiento:</mark> <input hidden type='date' class=\"form-control\" name='fnac' id='fnac' value='$fnac'></label><br>
+        <label><mark>Num Expe: </mark><input hidden type='text' class=\"form-control\" name='numExpe' id='numExp' value='$numExp'></label><br>";
     } elseif ($idTipoUsuario == 1) {
-        echo "<label>Email:<input type='email' name='pemail' id='pemail' value='$db_email'></label><br>
-              <label>Telefono:<input type='tel' name='ptel' id='ptel' value='$db_tel'></label><br>";
+        echo "<label>Email:<input type='email' name='pemail'class=\"form-control\"  id='pemail' value='$db_email'></label><br>
+              <label>Telefono:<input type='tel' name='ptel' class=\"form-control\" id='ptel' value='$db_tel'></label><br>";
     }
-    echo "<label>Tipo usuario id:<input type='text' name='idTipoUsuario' class='idTipoUsuario' value=$idTipoUsuario></label><br
-    <label>Curso id: <input type='text' name='idCurso' class='idCurso' value=$idCurso></label><br>
+    echo "<label>Tipo usuario id:<input type='text' name='idTipoUsuario' class=\"form-control\" value=$idTipoUsuario></label><br>
+    <label>Curso id: <input type='text' name='idCurso' class='form-control' value=$idCurso></label><br>
   <button type='submit' name='actualizar' class='btn btn-info mt-3 '>save</button>
   </form>
   </div>
