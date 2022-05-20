@@ -1,25 +1,10 @@
 <?php
-
-
-
-
-
-
-
-
-
-
-
 namespace Composer;
 
 use Composer\Autoload\ClassLoader;
 use Composer\Semver\VersionParser;
 
-
-
-
-
-
+// coment just for testing docker env to git
 class InstalledVersions
 {
 private static $installed = array (
